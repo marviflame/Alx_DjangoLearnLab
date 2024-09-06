@@ -2,6 +2,7 @@ from rest_framework import generics, permissions
 from .models import Book
 from .serializers import BookSerializer
 from django_filters import rest_framework
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 filters.OrderingFilter
 filters.SearchFilter
@@ -36,4 +37,3 @@ class BookDeleteView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [permissions.IsAuthenticated]
-
